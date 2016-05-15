@@ -1,5 +1,14 @@
 <?php
 
+   if (isset($_GET['test']) && $_GET['test'] == 'true') {
+       $res = openDBConnection();
+       echo json_encode($res);
+       exit;
+   }
+   
+   openDBConnection();
+
+
   //get the IP address for each user.
   //would be interesting to see if app is used from multiple locations
 	function getUserIP()
@@ -24,22 +33,26 @@
   	  return $ip;
 	}
 
+  function openDBConnection() {
+      $rtn = [];
 
-	$user_ip = getUserIP();
+      $link = @mysql_connect('127.0.0.1', 'x', 'x');
 
-	$link = mysql_connect('127.0.0.1', 'x', 'x');
-	if(!$link){
-		die('Not Connected: ' . mysql_error()); 
-	}
+      if(!$link){
+        $rtn['status'] = 'fail';
+        $rtn['reason'] = 'Not Connected';
+        return $rtn;
+      } 
+      
+      $db_selected = @mysql_select_db('bookmarks', $link);
+      if(!$db_selected){
+        $rtn['status'] = "fail";
+        $rtn['reason'] = "Cannot use database bookmarks";
+        return $rtn;
+     } 
+    
 
-	$db_selected = mysql_select_db('bookmarks', $link);
-	if(!$db_selected){
-		die("Cannot use database bookmarks :" . mysql_error());
-	}
-
-  $connect_message = "Connected to bookmarks database";
-
-	 // echo $connect_message;
+  }	
 
 ?>
 

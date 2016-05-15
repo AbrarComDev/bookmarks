@@ -1,6 +1,44 @@
 var bookmarksApp = angular.module('bookmarksApp', ['angularUtils.directives.dirPagination']);
 
-bookmarksApp.controller('bookmarksController', function($scope, $http, $httpParamSerializerJQLike) {
+//"run" executes once all modules have been loaded.
+// bookmarksApp.run(function($rootScope, $http) {
+
+
+//     $http({
+//         method: "get",
+//         url: "includes/db_connect.php"
+//     }).then(function successCallback(response) {
+//         $rootScope.connectMessage = response.data.connect;
+//         console.log(response.data.connect);
+
+//     }, function errorCallback(response) {
+//         console.log("ERROR.");
+//     });
+
+
+// });
+
+
+bookmarksApp.controller('bookmarksController', function($rootScope, $scope, $http, $httpParamSerializerJQLike) {
+
+
+    //Test the database connection and display an appropriate message.
+    $http({
+        method: "get",
+        url: "includes/db_connect.php?test=true"
+    }).then(function successCallback(res) {
+        if (res.data.status == 'fail') {
+            $('h6').addClass('error-text');
+            $scope.connectMessage = "Unable to connect to the mysql database";
+        } else {
+            $('h6').addClass('success-text');
+            $scope.connectMessage = "Successfully connected to the mysql database";
+        }
+    }, function errorCallback(res) {
+        console.log("ERROR.");
+    });
+
+
     $scope.message = "";
     $scope.newBookMark = "http://";
 

@@ -8,6 +8,7 @@
   $email = "'" . $input['email'] . "'";
  
   $resp = [];
+  $resp['connect'] = $db_connect_message['connect'];
 
   $query = "SELECT * FROM user WHERE email=" . $email;
   $result = mysql_query($query);
