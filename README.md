@@ -14,25 +14,23 @@ View and manage a list of bookmarks not defined in your web browser, Key feature
 
 * [AngularJS] - HTML enhanced for web apps!
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework
-* [jQuery] - duh
-* [Mongo] - noSql data store
-* [Mongoose] - object modeling for node.js
+* [jQuery] - for some DOM manipulations
+* [Apache] - web server
+* [PHP] - handles all CRUD operations
+* [MySQL] - relational database
 * [dirPaginate] - allows paging through your links
 * [Bootstrap Validator] - offers automatic form validation.
 
 ### Installation
-  - cd to the "front" directory
+  - cd to the project root directory
     * run npm install
-    * Note: uses port 8200
-  - cd to the "back" directory
-    * run npm install
-    * Note: uses port 3200
+    * ensure Apache and MySQL are running
+    * MySQL db name is "bookmarks"
+    * Table name "user"
 
 ### Demo
 
-tbd
+http://curtisjenkins.net/bookmarks
 
 
 ### License
@@ -45,9 +43,9 @@ MIT
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
 
-   [Mongo]: <http://mongodb.com>
-   [Mongoose]: <http://mongoosejs.com>
-   [node.js]: <http://nodejs.org>
+   [PHP]: <http://www.php.net/>
+   [MySQL]: <http://mysql.com>
+   [Apache]: <http://apache.org>
    [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
    [express]: <http://expressjs.com>
    [AngularJS]: <http://angularjs.org>
