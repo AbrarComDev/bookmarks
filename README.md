@@ -1,6 +1,6 @@
 # Bookmarks
 
-View and manage a list of bookmarks not defined in your web browser, Key features should include click tracking, adding
+View and manage your bookmarks from anywhere!
 
 ### Key Features
 -  Click Tracking
