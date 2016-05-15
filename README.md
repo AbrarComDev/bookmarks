@@ -12,14 +12,14 @@ View and manage your bookmarks from anywhere!
 
 ### Tech
 
-* [AngularJS] - HTML enhanced for web apps!
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
+* [AngularJS] - Web MVC framework
+* [Twitter Bootstrap] - UI layout
 * [jQuery] - for some DOM manipulations
 * [Apache] - web server
-* [PHP] - handles all CRUD operations
+* [PHP] - scripts to handle all CRUD operations
 * [MySQL] - relational database
-* [dirPaginate] - allows paging through your links
-* [Bootstrap Validator] - offers automatic form validation.
+* [dirPaginate] - allows paging through your bookmarks
+* [Bootstrap Validator] - form validation.
 
 ### Installation
   - cd to the project root directory
