@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bookmarksApp">
+
+<head>
+    <title>Bookmarks Manager</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- <base href="/" /> -->
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap-validator/dist/validator.min.js"></script>
+    <script type="text/javascript" src="app/app.module.js"></script>
+    <script type="text/javascript" src="dirPagination.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald%7CIndie+Flower%7CDosis">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body ng-controller="bookmarksController">
+    <div id="wrapper" class="container-fluid">
+        <div>
+            <h1>Book Marks Manager</h1>
+        </div>
+        <form data-toggle="validator" role="form" id="new-form" name="new-book-mark">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label>Your Email Address </label>
+                        <input ng-change="emailChange()" type="email" ng-trim="true" ng-model="email" placeholder="Enter your email address to retrieve your bookmarks" data-error="Doesn't look like an email address" class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="col-sm-1 button-holder">
+                        <a id="get-bm-button" role="button" class="btn btn-primary" ng-click="lookup()">Get Bookmarks</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label>Enter Book Mark</label>
+                        <input type="url" ng-model="newBookMark" placeholder="google.com" data-error="Enter a well formed url" class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="col-sm-1 button-holder">
+                        <a role="button" class="btn btn-success" ng-click="addBookMark()">Add</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="error-text">{{message}}</div>
+            </div>
+            <div class="row bookmarks-list">
+                <div class="col-sm-6">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                <input type="text" class="form-control" placeholder="Search bookmark" ng-model="searchBM">
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">Book Mark 
+                                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                                </td>
+                                <td>
+                                    <a href="#" ng-click="sortType = 'clicks'; sortReverse = !sortReverse">Click Count
+                                    <span ng-show="sortType == 'clicks' && !sortReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'clicks' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                                </td>
+                                <td>Remove? </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr ng-repeat="bm in data | orderBy:orderByFunction:sortReverse | filter:paginate | filter:searchBM"> -->
+                            <tr dir-paginate="bm in data | orderBy:orderByFunction(sortType):sortReverse | filter:searchBM |itemsPerPage:5">
+                                <td><a ng-click="clickCount(bm)">{{ bm.url }}</a></td>
+                                <td>{{ bm.click_count }}</td>
+                                <td>
+                                    <button ng-click="remove(bm)" class="btn btn-danger">Remove</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                    </dir-pagination-controls>
+                </div>
+            </div>
+    </div>
+</body>
+
+</html>

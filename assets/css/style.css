@@ -1,0 +1,29 @@
+
+body {
+  padding-top: 2px;
+  background-color: #f2f2f2;
+  color: #003300;
+}
+
+input {
+  width: 50%;
+}
+h1 {
+  margin-bottom: 15px;
+}
+
+#get-bm-button {
+  visibility: hidden;
+}
+.bookmarks-list {
+  margin-top: 10px;
+}
+
+.error-text {
+  color: red;
+}
+
+.button-holder {
+  margin-top: 24px;
+}
+
