@@ -1,23 +1,19 @@
 {
-  "name": "coffeev2-angular-front",
+  "name": "bookmarks",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.5",
-    "angular-cookies": "^1.5.5",
-    "angular-route": "^1.5.5",
     "bootstrap": "^3.3.6",
     "bootstrap-validator": "^0.10.2",
     "connect": "^3.4.1",
-    "jquery": "^2.2.3",
-    "rand-token": "^0.2.1",
-    "serve-static": "^1.10.2"
+    "jquery": "^2.2.3"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Curtis Jenkins",
   "license": "ISC"
 }
