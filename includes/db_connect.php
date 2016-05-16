@@ -1,12 +1,12 @@
 <?php
 
    if (isset($_GET['test']) && $_GET['test'] == 'true') {
-       $res = openDBConnection();
-       echo json_encode($res);
+       $dbStatus = openDBConnection();
+       echo json_encode($dbStatus);
        exit;
    }
    
-   openDBConnection();
+   $dbStatus = openDBConnection();
 
 
   //get the IP address for each user.
@@ -35,6 +35,7 @@
 
   function openDBConnection() {
       $rtn = [];
+      $rtn['status'] = 'success';
 
       $link = @mysql_connect('127.0.0.1', 'x', 'x');
 
@@ -48,10 +49,10 @@
       if(!$db_selected){
         $rtn['status'] = "fail";
         $rtn['reason'] = "Cannot use database bookmarks";
-        return $rtn;
+        
      } 
     
-
+     return $rtn;
   }	
 
 ?>
